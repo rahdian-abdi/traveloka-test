@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<!--@BeforeSuite-->
+<suite name="Saucedemo">
+<!--    @BeforeTest-->
+    <test name="SortItem">
+        <parameter name="username" value="standard_user"/>
+        <parameter name="password" value="secret_sauce"/>
+        <parameter name="baseUrl" value="https://www.saucedemo.com"/>
+        <parameter name="sortByAsc" value="Name (A to Z)"></parameter>
+        <parameter name="sortByDesc" value="Name (Z to A)"></parameter>
+        <classes>
+<!--            @BeforeClass-->
+            <class name="saucedemo.testcases.SortingTest"></class>
+<!--            @AfterClass-->
+        </classes>
+    </test>
+<!--    @AfterTest-->
+    <test name="Login Test">
+        <parameter name="username" value="standard_user"/>
+        <parameter name="password" value="secret_sauce"/>
+        <parameter name="baseUrl" value="https://www.saucedemo.com"/>
+        <parameter name="inventoryUrl" value="https://www.saucedemo.com/inventory.html"/>
+        <parameter name="invalidUsername" value="locked_out_user"/>
+        <classes>
+            <class name="saucedemo.testcases.LoginTest"/>
+        </classes>
+    </test> <!-- Test -->
+</suite> <!-- Suite -->
+<!--@AfterSuite-->
+
