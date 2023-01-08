@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.*;
+import saucedemo.CustomDataProvider;
 import saucedemo.PageObject;
 
 import java.util.concurrent.TimeUnit;
@@ -26,15 +27,6 @@ public class LoginTest {
         driver.quit();
         driver = null;
     }
-
-//    @BeforeTest
-//    public void settingUp(){
-//
-//    }
-//    @AfterTest
-//    public void tearingDown(){
-//
-//    }
     @Parameters("baseUrl")
     @BeforeMethod
     public void goToUrl(String baseUrl){
@@ -44,20 +36,21 @@ public class LoginTest {
     public void deleteCookies(){
         driver.manage().deleteAllCookies();
     }
-    @Parameters({"username", "password", "inventoryUrl"})
-    @Test(priority = 1)
-    public void loginWithValidCredentials(String username, String password, String inventoryUrl){
+    @Parameters("inventoryUrl")
+    @Test(dataProvider = "LoginData", dataProviderClass = CustomDataProvider.class)
+    public void loginWithValidCredentials(String username, String password){
         object.inputText(By.id("user-name"), username);
         object.inputText(By.id("password"), password);
         object.click(By.id("login-button"));
-        assertEquals(inventoryUrl, object.getUrl());
-    }
-    @Parameters({"invalidUsername", "password"})
-    @Test(priority = 2)
-    public void loginWithInvalidCredentials(String invalidUsername, String password){
-        object.inputText(By.id("user-name"), invalidUsername);
-        object.inputText(By.id("password"), password);
-        object.click(By.id("login-button"));
-        assertTrue(object.isDisplayed(By.className("error-button")));
+
+        switch (username){
+            case "secret_sauce":
+                String urlInventory = "https://www.saucedemo.com/inventory.html";
+                assertEquals(urlInventory, object.getUrl());
+                break;
+            case "locked_out_user":
+                assertTrue(object.isDisplayed(By.className("error-button")));
+                break; // It will execute all case unless put the break
+        }
     }
 }

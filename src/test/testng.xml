@@ -7,8 +7,6 @@
         <parameter name="username" value="standard_user"/>
         <parameter name="password" value="secret_sauce"/>
         <parameter name="baseUrl" value="https://www.saucedemo.com"/>
-        <parameter name="sortByAsc" value="Name (A to Z)"></parameter>
-        <parameter name="sortByDesc" value="Name (Z to A)"></parameter>
         <classes>
 <!--            @BeforeClass-->
             <class name="saucedemo.testcases.SortingTest"></class>
@@ -17,11 +15,8 @@
     </test>
 <!--    @AfterTest-->
     <test name="Login Test">
-        <parameter name="username" value="standard_user"/>
-        <parameter name="password" value="secret_sauce"/>
         <parameter name="baseUrl" value="https://www.saucedemo.com"/>
         <parameter name="inventoryUrl" value="https://www.saucedemo.com/inventory.html"/>
-        <parameter name="invalidUsername" value="locked_out_user"/>
         <classes>
             <class name="saucedemo.testcases.LoginTest"/>
         </classes>
