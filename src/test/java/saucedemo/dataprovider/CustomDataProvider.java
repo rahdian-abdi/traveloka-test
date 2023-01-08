@@ -1,9 +1,9 @@
-package saucedemo;
+package saucedemo.dataprovider;
 
 import org.testng.annotations.DataProvider;
 
 public class CustomDataProvider {
-    @org.testng.annotations.DataProvider(name = "LoginData")
+    @DataProvider(name = "LoginData")
     public Object[][] getData(){
         Object[][] data = {{"standard_user", "secret_sauce"}, {"locked_out_user", "secret_sauce"}};
         return data;

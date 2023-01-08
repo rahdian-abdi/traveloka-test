@@ -3,36 +3,30 @@ package saucedemo.testcases;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.*;
-import saucedemo.CustomDataProvider;
-import saucedemo.PageObject;
+import saucedemo.dataprovider.CustomDataProvider;
+import saucedemo.initiate.Initialize;
+import saucedemo.pageobject.PageObject;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 import static org.junit.Assert.*;
 
-public class SortingTest  {
+public class SortingTest {
     public WebDriver driver;
     public PageObject object;
 
     @BeforeTest
     public void setUp(){
-        driver = new ChromeDriver();
-        object = new PageObject(driver);
-        System.out.println("Open browser");
-        driver.manage().window().maximize();
-        driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
-        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+       Initialize.initiate();
+       driver = Initialize.driver;
+       object = Initialize.object;
     }
     @AfterTest
     public void tearDown(){
-        System.out.println("Close browser");
-        driver.quit();
-        driver = null;
+        Initialize.quit();
     }
     @Parameters({"baseUrl", "username", "password"})
     @BeforeMethod
