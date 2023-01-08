@@ -3,15 +3,15 @@ package saucedemo.pageobject;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
 
-public class PageObject {
-    WebDriver driver;
-
-    public PageObject(WebDriver driver){
-        this.driver = driver;
+public class BasePage {
+    public static WebDriver driver;
+    public static void getDriver(){
+        driver = new ChromeDriver();
     }
 
     public String getUrl(){
