@@ -7,21 +7,33 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class BasePage {
-    public static WebDriver driver;
-    public static void getDriver(){
+    public WebDriver driver;
+    public String BASE_URL;
+    public void initiateDriver(){
         driver = new ChromeDriver();
+        driver.manage().window().maximize();
+        driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        BASE_URL = "https://www.saucedemo.com";
     }
-
+    public void closeDriver(){
+        driver.quit();
+        driver = null;
+    }
+    public WebDriver getDriver(){
+        return driver;
+    }
     public String getUrl(){
-        return driver.getCurrentUrl();
+        return getDriver().getCurrentUrl();
     }
     public void navigateUrl(String url){
-        driver.navigate().to(url);
+        getDriver().navigate().to(url);
     }
     public WebElement find(By by){
-        return driver.findElement(by);
+        return getDriver().findElement(by);
     }
     public List<WebElement> finds(By by){
         return driver.findElements(by);

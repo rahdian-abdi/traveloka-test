@@ -4,7 +4,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.*;
 import saucedemo.dataprovider.CustomDataProvider;
-import saucedemo.initiate.Initialize;
 import saucedemo.pageobject.BasePage;
 
 
@@ -17,28 +16,27 @@ import static org.junit.Assert.*;
 public class SortingTest extends BasePage {
     @BeforeTest
     public void setUp(){
-        getDriver();
-        Initialize.initiate();
+        initiateDriver();
     }
     @AfterTest
     public void tearDown(){
-        Initialize.quit();
+        closeDriver();
     }
-    @Parameters({"baseUrl", "username", "password"})
+    @Parameters({"username", "password"})
     @BeforeMethod
-    public void login(String baseUrl, String username, String password){
-        navigateUrl(baseUrl);
+    public void login(String username, String password){
+        navigateUrl(BASE_URL);
         inputText(By.id("user-name"), username);
         inputText(By.id("password"), password);
         click(By.id("login-button"));
     }
     @AfterMethod
-    public void logout(){
+    public void logout () {
         click(By.id("react-burger-menu-btn"));
         click(By.id("logout_sidebar_link"));
     }
     @Test(dataProvider = "SortData", dataProviderClass = CustomDataProvider.class)
-    public void sortItem(String sortBy){
+    public void sort_item(String sortBy){
         selectDropDown(By.className("product_sort_container"), sortBy);
         List<WebElement> element = finds(By.className("inventory_item_name"));
         List<String> items = new ArrayList<>();

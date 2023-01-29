@@ -6,7 +6,6 @@
     <test name="SortItem">
         <parameter name="username" value="standard_user"/>
         <parameter name="password" value="secret_sauce"/>
-        <parameter name="baseUrl" value="https://www.saucedemo.com"/>
         <classes>
 <!--            @BeforeClass-->
             <class name="saucedemo.testcases.SortingTest"></class>
@@ -15,8 +14,6 @@
     </test>
 <!--    @AfterTest-->
     <test name="Login Test">
-        <parameter name="baseUrl" value="https://www.saucedemo.com"/>
-        <parameter name="inventoryUrl" value="https://www.saucedemo.com/inventory.html"/>
         <classes>
             <class name="saucedemo.testcases.LoginTest"/>
         </classes>
