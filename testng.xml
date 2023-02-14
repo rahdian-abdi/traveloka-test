@@ -3,19 +3,25 @@
 <!--@BeforeSuite-->
 <suite name="Saucedemo">
 <!--    @BeforeTest-->
-    <test name="SortItem">
-        <parameter name="username" value="standard_user"/>
-        <parameter name="password" value="secret_sauce"/>
-        <classes>
-<!--            @BeforeClass-->
-            <class name="saucedemo.testcases.SortingTest"></class>
-<!--            @AfterClass-->
-        </classes>
-    </test>
 <!--    @AfterTest-->
-    <test name="Login Test">
+    <groups>
+        <run>
+            <include name="smoke"></include>
+        </run>
+    </groups>
+    <test name="Login To Administration Panel">
         <classes>
-            <class name="saucedemo.testcases.LoginTest"/>
+            <class name="tapmo.testcases.access_function.login_to_administration_panel.LoginToAdministrationPanel"/>
+        </classes>
+    </test> <!-- Test -->
+    <test name="Show/Hide">
+        <classes>
+            <class name="tapmo.testcases.access_function.show_hide.ShowHide"/>
+        </classes>
+    </test> <!-- Test -->
+    <test name="Push Notification">
+        <classes>
+            <class name="tapmo.testcases.access_function.push_notification.PushNotification"/>
         </classes>
     </test> <!-- Test -->
 </suite> <!-- Suite -->
