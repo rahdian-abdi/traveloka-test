@@ -7,6 +7,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import tapmo.dataprovider.PageElement;
 
 import java.time.Duration;
 import java.util.List;
@@ -63,6 +64,9 @@ public class BasePage {
     public boolean isDisplayed(By by){
         return find(by).isDisplayed();
     }
+    public void clearField(By by){
+        find(by).clear();
+    }
     public String getAttributeType(By by){
         return find(by).getAttribute("type");
     }
@@ -73,10 +77,10 @@ public class BasePage {
 
     public void login_cms(){
         // Given
-        inputText(By.cssSelector("input[class='input input-bordered w-full']"), "superadmin@gmail.com");
-        inputText(By.cssSelector("input[class='w-full input input-bordered']"), "superadmin");
+        inputText(By.cssSelector(PageElement.CSS_INPUT_USERNAME_FIELD), "superadmin@gmail.com");
+        inputText(By.cssSelector(PageElement.CSS_INPUT_PASSWORD_FIELD), "superadmin");
         // When
-        click(By.cssSelector("button[class='btn bg-green-600 border-none mt-4 hover:bg-green-700 ']"));
+        click(By.cssSelector(PageElement.CSS_LOGIN_BUTTON));
         waitWebToLoad("http://tapfe.terralogiq.net:3001/dashboard");
         // Then
         assertEquals("http://tapfe.terralogiq.net:3001/dashboard", getUrl());

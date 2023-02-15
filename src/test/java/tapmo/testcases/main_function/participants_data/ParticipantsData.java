@@ -1,37 +1,69 @@
 package tapmo.testcases.main_function.participants_data;
 
 import org.openqa.selenium.By;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
+import org.openqa.selenium.WebElement;
+import org.testng.annotations.*;
+import tapmo.dataprovider.PageElement;
 import tapmo.pageobject.BasePage;
 
+import java.util.List;
+
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 public class ParticipantsData extends BasePage {
-    @BeforeMethod(alwaysRun = true)
+    @BeforeTest(alwaysRun = true)
     public void setUp(){
         initiateDriver();
         navigateUrl(BASE_URL);
+        login_cms();
     }
-    @AfterMethod(alwaysRun = true)
+    @AfterTest(alwaysRun = true)
     public void tearDown(){
         closeDriver();
     }
     @Test(priority = 1, groups = "smoke")
     public void verify_data_participants_is_displayed(){
         // Given
-        login_cms();
-
         // When
-        click(By.xpath("//*[@id=\"__next\"]/div[1]/div/div[1]/div/div[2]/ul/div[1]/li"));
+        click(By.xpath(PageElement.XPATH_PARTICIPANTS_MENU));
 
         // Then
         int i=1;
         while (i <= 5){
-            isDisplayed(By.xpath("//*[@id=\"__next\"]/div[1]/div/div[2]/div[2]/div[3]/div/div/div[2]/div/table/tbody/tr[10]/td["+i+"]"));
+            isDisplayed(By.xpath(PageElement.XPATH_PARTICIPANTS_ROW_TEN(i)));
             i++;
         }
     }
+    @Test(priority = 2, groups = "smoke")
+    public void verify_search_functionality_participants_is_working(){
+        // Given
+        String target_nik = "940407430886001";
+        int data_target_length = 5;
+
+        // When
+        click(By.xpath(PageElement.XPATH_PARTICIPANTS_MENU));
+        inputText(By.xpath(PageElement.XPATH_SEARCH_PARTICIPANTS_BAR), target_nik);
+        click(By.xpath(PageElement.XPATH_SEARCH_PARTICIPANTS_BUTTON));
+        List<WebElement> row_length = finds(By.cssSelector(PageElement.CSS_ROW_DATA_PARTICIPANTS));
+        String nik_no = getText(By.xpath(PageElement.XPATH_NIK_FIRST_ROW_DATA));
+
+        // Then
+        assertEquals(target_nik, nik_no);
+        assertEquals(data_target_length, row_length.size());
+    }
+
+    @Test(priority = 3, groups = "smoke")
+    public void verify_clear_functionality_participants_is_working(){
+
+        // When
+        click(By.xpath(PageElement.XPATH_CLEAR_PARTICIPANTS_BAR_BUTTON));
+
+        // Then
+        int i=1;
+        while (i <= 5){
+            isDisplayed(By.xpath(PageElement.XPATH_PARTICIPANTS_ROW_TEN(i)));
+            i++;
+        }
+    }
+
 }

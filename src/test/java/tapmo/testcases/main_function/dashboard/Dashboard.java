@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import tapmo.dataprovider.PageElement;
 import tapmo.pageobject.BasePage;
 
 import static org.junit.Assert.assertEquals;
@@ -25,7 +26,7 @@ public class Dashboard extends BasePage {
         login_cms();
         // When
         // Then
-        assertTrue(isDisplayed(By.xpath("//*[@id=\"__next\"]/div[1]/div/div[2]/div[2]/div/div/div/div[1]")));
-        assertTrue(isDisplayed(By.xpath("//*[@id=\"__next\"]/div[1]/div/div[2]/div[2]/div/div/div/div[2]")));
+        assertTrue(isDisplayed(By.xpath(PageElement.XPATH_SITARA_GRAPH)));
+        assertTrue(isDisplayed(By.xpath(PageElement.XPATH_FLPP_GRAPH)));
     }
 }

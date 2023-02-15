@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import tapmo.dataprovider.PageElement;
 import tapmo.pageobject.BasePage;
 
 import static org.junit.Assert.assertEquals;
@@ -25,9 +26,9 @@ public class PushNotification extends BasePage {
         login_cms();
 
         // When
-        click(By.xpath("//*[@id=\"__next\"]/div[1]/div/div[2]/div[1]/div/div[2]/div[1]/label"));
+        click(By.xpath(PageElement.XPATH_NOTIFICATION_BUTTON));
 
         // Then
-        assertTrue(isDisplayed(By.xpath("//*[@id=\"__next\"]/div[1]/div/div[2]/div[1]/div/div[2]/div[1]/div/div/ul/div[3]")));
+        assertTrue(isDisplayed(By.xpath(PageElement.XPATH_NOTIFICATION_BOARD)));
     }
 }

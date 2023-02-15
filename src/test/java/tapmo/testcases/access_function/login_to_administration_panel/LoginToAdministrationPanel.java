@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import tapmo.dataprovider.PageElement;
 import tapmo.pageobject.BasePage;
 
 import static org.junit.Assert.assertEquals;
@@ -27,27 +28,27 @@ public class LoginToAdministrationPanel extends BasePage {
     @Test(priority = 1, groups = "smoke")
     public void login_with_valid_credentials(){
         // Given
-        inputText(By.cssSelector("input[class='input input-bordered w-full']"), "superadmin@gmail.com");
-        inputText(By.cssSelector("input[class='w-full input input-bordered']"), "superadmin");
+        inputText(By.cssSelector(PageElement.CSS_INPUT_USERNAME_FIELD), "superadmin@gmail.com");
+        inputText(By.cssSelector(PageElement.CSS_INPUT_PASSWORD_FIELD), "superadmin");
 
         // When
-        click(By.cssSelector("button[class='btn bg-green-600 border-none mt-4 hover:bg-green-700 ']"));
+        click(By.cssSelector(PageElement.CSS_LOGIN_BUTTON));
         waitWebToLoad(DASHBOARD_URL);
 
         // Then
         assertEquals(DASHBOARD_URL, getUrl());
-        assertTrue(isDisplayed(By.xpath("//*[@id=\"__next\"]/div[1]/div/div[1]/div/div[2]/ul/li[1]/a")));
+        assertTrue(isDisplayed(By.xpath(PageElement.XPATH_DASHBOARD_MENU)));
     }
 
     @Test(priority = 2, groups = "smoke")
     public void login_with_invalid_credentials(){
         // Given
-        inputText(By.cssSelector("input[class='input input-bordered w-full']"), "superadmin@gmail.com");
-        inputText(By.cssSelector("input[class='w-full input input-bordered']"), "superadmininvalid");
+        inputText(By.cssSelector(PageElement.CSS_INPUT_USERNAME_FIELD), "superadmin@gmail.com");
+        inputText(By.cssSelector(PageElement.CSS_INPUT_PASSWORD_FIELD), "superadmininvalid");
 
         // When
-        click(By.cssSelector("button[class='btn bg-green-600 border-none mt-4 hover:bg-green-700 ']"));
-        waitElementAppear(By.cssSelector("div[class='Toastify__toast-container Toastify__toast-container--top-center']"));
+        click(By.cssSelector(PageElement.CSS_LOGIN_BUTTON));
+        waitElementAppear(By.cssSelector(PageElement.CSS_TOAST_ERROR_LOGIN_MESSAGE));
 
         // Then
         assertEquals(LOGIN_URL, getUrl());
@@ -71,13 +72,13 @@ public class LoginToAdministrationPanel extends BasePage {
         waitWebToLoad(DASHBOARD_URL);
         assertEquals(DASHBOARD_URL, getUrl());
     }
-    @Test(priority = 4, groups = "smoke")
+    @Test(priority = 5, groups = "smoke")
     public void verify_logout_functionality_is_working(){
         // Given
         login_cms();
         // When
-        click(By.xpath("//*[@id=\"__next\"]/div[1]/div/div[2]/div[1]/div/div[2]/div[2]/div/button/div"));
-        click(By.xpath("//*[@id=\"__next\"]/div[1]/div/div[2]/div[1]/div/div[2]/div[2]/ul"));
+        click(By.xpath(PageElement.XPATH_PROFILE_MENU));
+        click(By.xpath(PageElement.XPATH_LOGOUT_BUTTON));
         // Then
         waitWebToLoad(LOGIN_URL);
         assertEquals(LOGIN_URL, getUrl());
