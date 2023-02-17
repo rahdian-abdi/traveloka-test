@@ -17,6 +17,9 @@ public class PageElement {
     public static String XPATH_PARTICIPANTS_ROW_TEN(int i){
         return "//*[@id=\"__next\"]/div[1]/div/div[2]/div[2]/div[3]/div/div/div[2]/div/table/tbody/tr[10]/td["+i+"]";
     }
+    public static String XPATH_LISTED_NIK_PARTICIPANTS(int i){
+        return "//*[@id=\"__next\"]/div[1]/div/div[2]/div[2]/div[3]/div/div/div[2]/div/table/tbody/tr["+i+"]/td[2]";
+    }
     public static String XPATH_SEARCH_PARTICIPANTS_BAR = "//*[@id=\"__next\"]/div[1]/div/div[2]/div[2]/div[3]/div/div/div[1]/div/div/input";
     public static String XPATH_SEARCH_PARTICIPANTS_BUTTON = "//*[@id=\"__next\"]/div[1]/div/div[2]/div[2]/div[3]/div/div/div[1]/div/button";
     public static String CSS_ROW_DATA_PARTICIPANTS = "td[class='min-w-[5rem] max-w-[20rem] whitespace-normal']";

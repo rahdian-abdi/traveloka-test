@@ -6,9 +6,10 @@ import org.testng.annotations.*;
 import tapmo.dataprovider.PageElement;
 import tapmo.pageobject.BasePage;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 public class ParticipantsData extends BasePage {
     @BeforeTest(alwaysRun = true)
@@ -35,7 +36,7 @@ public class ParticipantsData extends BasePage {
         }
     }
     @Test(priority = 2, groups = "smoke")
-    public void verify_search_functionality_participants_is_working(){
+    public void search_nik_with_registered_nik(){
         // Given
         String target_nik = "940407430886001";
         int data_target_length = 5;
@@ -50,6 +51,34 @@ public class ParticipantsData extends BasePage {
         // Then
         assertEquals(target_nik, nik_no);
         assertEquals(data_target_length, row_length.size());
+    }
+    @Test(priority = 3, groups = "smoke")
+    public void search_nik_with_3_digit_number(){
+        // Given
+        String target_nik = "489";
+
+        // When
+        click(By.xpath(PageElement.XPATH_PARTICIPANTS_MENU));
+        inputText(By.xpath(PageElement.XPATH_SEARCH_PARTICIPANTS_BAR), target_nik);
+        click(By.xpath(PageElement.XPATH_SEARCH_PARTICIPANTS_BUTTON));
+
+        int lastIndex = 10;
+        int startIndex = 1;
+        List<String> listNik = new ArrayList<>();
+
+        while (startIndex <= lastIndex){
+            try {
+                listNik.add(getText(By.xpath(PageElement.XPATH_LISTED_NIK_PARTICIPANTS(startIndex))));
+            } catch (Exception e){
+                break;
+            }
+            startIndex++;
+        }
+
+        for (String n : listNik){
+            int isContain = n.indexOf(target_nik);
+            assertTrue(isContain > -1);
+        }
     }
 
     @Test(priority = 3, groups = "smoke")
