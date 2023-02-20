@@ -19,6 +19,7 @@ public class BasePage {
     public WebDriver driver;
     public String BASE_URL;
     public void initiateDriver(){
+        System.setProperty("webdriver.chrome.driver", "D:\\driver\\chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
@@ -58,6 +59,10 @@ public class BasePage {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
         wait.until(ExpectedConditions.presenceOfElementLocated(by));
     }
+    public void waitElementDisappear(By by){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(by));
+    }
     public void click(By by){
         find(by).click();
     }
@@ -73,6 +78,10 @@ public class BasePage {
     public void selectDropDown(By by, String selectBy){
         Select select = new Select(find(by));
         select.selectByVisibleText(selectBy);
+    }
+    public String uploadImage(){
+        String DIR = System.getProperty("user.dir");
+        return DIR+"/src/test/resources/media/blank-profile.png";
     }
 
     public void login_cms(){

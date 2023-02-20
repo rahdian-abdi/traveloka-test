@@ -1,6 +1,8 @@
 package tapmo.dataprovider;
 
-public class PageElement {
+import tapmo.pageobject.BasePage;
+
+public class PageElement extends BasePage {
     public static String CSS_INPUT_USERNAME_FIELD = "input[class='input input-bordered w-full']";
     public static String CSS_INPUT_PASSWORD_FIELD = "input[class='w-full input input-bordered']";
     public static String CSS_LOGIN_BUTTON = "button[class='btn bg-green-600 border-none mt-4 hover:bg-green-700 ']";
@@ -13,18 +15,17 @@ public class PageElement {
     public static String XPATH_SITARA_GRAPH = "//*[@id=\"__next\"]/div[1]/div/div[2]/div[2]/div/div/div/div[1]";
     public static String XPATH_FLPP_GRAPH = "//*[@id=\"__next\"]/div[1]/div/div[2]/div[2]/div/div/div/div[2]";
     public static String XPATH_DASHBOARD_MENU = "//*[@id=\"__next\"]/div[1]/div/div[1]/div/div[2]/ul/li[1]/a";
-    public static String XPATH_PARTICIPANTS_MENU = "//*[@id=\"__next\"]/div[1]/div/div[1]/div/div[2]/ul/div[1]/li";
-    public static String XPATH_PARTICIPANTS_ROW_TEN(int i){
-        return "//*[@id=\"__next\"]/div[1]/div/div[2]/div[2]/div[3]/div/div/div[2]/div/table/tbody/tr[10]/td["+i+"]";
-    }
+    public static String XPATH_PARTICIPANTS_MENU = "//*[@id=\"__next\"]/div[1]/div/div[1]/div/div[2]/ul/div[2]/li/a";
     public static String XPATH_LISTED_NIK_PARTICIPANTS(int i){
         return "//*[@id=\"__next\"]/div[1]/div/div[2]/div[2]/div[3]/div/div/div[2]/div/table/tbody/tr["+i+"]/td[2]";
     }
-    public static String XPATH_SEARCH_PARTICIPANTS_BAR = "//*[@id=\"__next\"]/div[1]/div/div[2]/div[2]/div[3]/div/div/div[1]/div/div/input";
-    public static String XPATH_SEARCH_PARTICIPANTS_BUTTON = "//*[@id=\"__next\"]/div[1]/div/div[2]/div[2]/div[3]/div/div/div[1]/div/button";
-    public static String CSS_ROW_DATA_PARTICIPANTS = "td[class='min-w-[5rem] max-w-[20rem] whitespace-normal']";
-    public static String XPATH_NIK_FIRST_ROW_DATA = "//*[@id=\"__next\"]/div[1]/div/div[2]/div[2]/div[3]/div/div/div[2]/div/table/tbody/tr/td[2]";
-    public static String XPATH_CLEAR_PARTICIPANTS_BAR_BUTTON = "//*[@id=\"__next\"]/div[1]/div/div[2]/div[2]/div[3]/div/div/div[1]/div/div/div[2]";
+    public static String XPATH_LISTED_NAME_PARTICIPANTS(int i){
+        return "//*[@id=\"__next\"]/div[1]/div/div[2]/div[2]/div[3]/div/div/div[2]/div/table/tbody/tr["+i+"]/td[3]";
+    }
+    public static String XPATH_PARTICIPANTS_SEARCH_BAR = "//*[@id=\"__next\"]/div[1]/div/div[2]/div[2]/div[3]/div/div/div[1]/div/div/input";
+    public static String XPATH_PARTICIPANTS_SEARCH_BUTTON = "//*[@id=\"__next\"]/div[1]/div/div[2]/div[2]/div[3]/div/div/div[1]/div/button";
+    public static String XPATH_PARTICIPANTS_CLEAR_BAR_BUTTON = "//*[@id=\"__next\"]/div[1]/div/div[2]/div[2]/div[3]/div/div/div[1]/div/div/div[2]";
+    public static String XPATH_PARTICIPANTS_DATA_NOT_FOUND = "//*[@id=\"__next\"]/div[1]/div/div[2]/div[2]/div[3]/div/div/div[2]/p";
 
     public static String XPATH_PARTICIPANTS_UPDATE_BUTTON_FIRST_ROW = "//*[@id=\"__next\"]/div[1]/div/div[2]/div[2]/div[3]/div/div/div[2]/div/table/tbody/tr[1]/td[5]";
     public static String XPATH_PARTICIPANTS_EDIT_NIK = "//*[@id=\"__next\"]/div[1]/div/div[2]/div[2]/div[1]/div/div[2]/form/div[1]/div[1]/input";
@@ -62,7 +63,42 @@ public class PageElement {
     public static String XPATH_PARTICIPANTS_EDIT_SAVE_BUTTON = "//*[@id=\"__next\"]/div[1]/div/div[2]/div[2]/div[1]/div/div[2]/form/div[2]/button[2]";
 
 
+    public static String XPATH_ACTIVE_BOARD_SCREEN_MENU = "//*[@id=\"__next\"]/div[1]/div/div[1]/div/div[2]/ul/div[3]/li/a";
+    public static String XPATH_ACTIVE_BOARD_SCREEN_NAME_LIST(int i){
+        return "//*[@id=\"__next\"]/div[1]/div/div[2]/div[2]/div[4]/div[2]/div/table/tbody/tr["+i+"]/td[2]";
+    }
+    public static String XPATH_ACTIVE_BOARD_SCREEN_SEARCH_BAR = "//*[@id=\"__next\"]/div[1]/div/div[2]/div[2]/div[4]/div[1]/div/div/input";
+    public static String XPATH_ACTIVE_BOARD_SCREEN_SEARCH_BUTTON = "//*[@id=\"__next\"]/div[1]/div/div[2]/div[2]/div[4]/div[1]/div/button";
+    public static String XPATH_ACTIVE_BOARD_NO_DATA_FOUND = "//*[@id=\"__next\"]/div[1]/div/div[2]/div[2]/div[4]/div[2]/p";
+    public static String XPATH_ACTIVE_BOARD_CREATE_BUTTON = "//*[@id=\"__next\"]/div[1]/div/div[2]/div[2]/div[4]/div[1]/button";
+    public static String XPATH_ACTIVE_BOARD_EDIT_BUTTON_FIRST_ROW = "//*[@id=\"__next\"]/div[1]/div/div[2]/div[2]/div[4]/div[2]/div/table/tbody/tr[1]/td[6]/div/button[2]";
 
 
+    public static String XPATH_ACTIVE_BOARD_MODAL_JUDUL(int i){
+        return "//*[@id=\"__next\"]/div[1]/div/div[2]/div[2]/div["+i+"]/div/div[2]/form/input[1]";
+    }
+    public static String XPATH_ACTIVE_BOARD_MODAL_DESKRIPSI(int i){
+        return "//*[@id=\"__next\"]/div[1]/div/div[2]/div[2]/div["+i+"]/div/div[2]/form/textarea";
+    }
+    public static String XPATH_ACTIVE_BOARD_MODAL_GAMBAR_UPLOAD(int i){
+        return "//*[@id=\"__next\"]/div[1]/div/div[2]/div[2]/div["+i+"]/div/div[2]/form/div[1]/div/div/div/input";
+    }
+    public static String XPATH_ACTIVE_BOARD_MODAL_NO_URUT(int i){
+        return "//*[@id=\"__next\"]/div[1]/div/div[2]/div[2]/div["+i+"]/div/div[2]/form/input[2]";
+    }
+    public static String XPATH_ACTIVE_BOARD_MODAL_STATUS(int i){
+        return "//*[@id=\"__next\"]/div[1]/div/div[2]/div[2]/div["+i+"]/div/div[2]/form/div[2]/select";
+    }
 
+
+    public static String XPATH_ACTIVE_BOARD_MODAL_SUBMIT_BUTTON(int i){
+        return "//*[@id=\"__next\"]/div[1]/div/div[2]/div[2]/div["+i+"]/div/div[2]/form/div[3]/button[2]";
+    }
+    public static String XPATH_ACTIVE_BOARD_MODAL_CANCEL_BUTTON(int i){
+        return  "//*[@id=\"__next\"]/div[1]/div/div[2]/div[2]/div["+i+"]/div/div[2]/form/div[3]/button[1]";
+    }
+    public static String XPATH_ACTIVE_BOARD_VERIFY(int i){
+        return "//*[@id=\"__next\"]/div[1]/div/div[2]/div[2]/div[4]/div[2]/div/table/tbody/tr[1]/td["+i+"]";
+    }
+    public static String XPATH_ACTIVE_BOARD_TOAST_MESSAGE = "//*[@id=\"__next\"]/div[2]/div";
 }
