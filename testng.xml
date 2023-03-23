@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <!--@BeforeSuite-->
-<suite name="Saucedemo">
+<suite name="TAPERA CMS">
 <!--    @BeforeTest-->
 <!--    @AfterTest-->
     <groups>
@@ -22,6 +22,21 @@
     <test name="Push Notification">
         <classes>
             <class name="tapmo.testcases.access_function.push_notification.PushNotification"/>
+        </classes>
+    </test> <!-- Test -->
+    <test name="Activation Board">
+        <classes>
+            <class name="tapmo.testcases.main_function.activation_board.ActivationBoard"/>
+        </classes>
+    </test> <!-- Test -->
+    <test name="Ads Media">
+        <classes>
+            <class name="tapmo.testcases.main_function.ads_media.AdsMedia"/>
+        </classes>
+    </test> <!-- Test -->
+    <test name="Dashboard">
+        <classes>
+            <class name="tapmo.testcases.main_function.dashboard.Dashboard"/>
         </classes>
     </test> <!-- Test -->
 </suite> <!-- Suite -->

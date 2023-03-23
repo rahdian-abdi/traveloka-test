@@ -55,7 +55,22 @@
             <artifactId>lombok</artifactId>
             <version>1.18.22</version>
         </dependency>
+        <dependency>
+            <groupId>io.github.bonigarcia</groupId>
+            <artifactId>webdrivermanager</artifactId>
+            <version>5.3.2</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/io.qameta.allure/allure-testng -->
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-testng</artifactId>
+            <version>2.21.0</version>
+        </dependency>
+
+
     </dependencies>
+
+
     <build>
         <plugins>
             <plugin>
@@ -71,4 +86,5 @@
         </plugins>
     </build>
 
+<!--    allure generate &#45;&#45;clean-->
 </project>

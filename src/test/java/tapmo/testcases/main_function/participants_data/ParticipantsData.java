@@ -14,7 +14,7 @@ public class ParticipantsData extends BasePage {
     @BeforeTest(alwaysRun = true)
     public void setUp(){
         initiateDriver();
-        navigateUrl(BASE_URL);
+        navigateUrl(LOGIN);
         login_cms();
     }
     @AfterTest(alwaysRun = true)

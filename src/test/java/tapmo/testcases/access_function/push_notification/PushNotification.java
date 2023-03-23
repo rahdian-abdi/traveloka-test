@@ -14,7 +14,7 @@ public class PushNotification extends BasePage {
     @BeforeMethod(alwaysRun = true)
     public void setUp(){
         initiateDriver();
-        navigateUrl(BASE_URL);
+        navigateUrl(LOGIN);
     }
     @AfterMethod(alwaysRun = true)
     public void tearDown(){

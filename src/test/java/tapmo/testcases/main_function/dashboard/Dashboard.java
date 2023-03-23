@@ -7,14 +7,13 @@ import org.testng.annotations.Test;
 import tapmo.dataprovider.PageElement;
 import tapmo.pageobject.BasePage;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class Dashboard extends BasePage {
     @BeforeMethod(alwaysRun = true)
     public void setUp(){
         initiateDriver();
-        navigateUrl(BASE_URL);
+        navigateUrl(LOGIN);
     }
     @AfterMethod(alwaysRun = true)
     public void tearDown(){

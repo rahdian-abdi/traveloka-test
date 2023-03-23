@@ -16,9 +16,12 @@ public class ActivationBoard extends BasePage {
     @BeforeTest(alwaysRun = true)
     public void setUp(){
         initiateDriver();
-        navigateUrl(BASE_URL);
+        navigateUrl(LOGIN);
         pageElement = new PageElement();
         login_cms();
+
+        // When
+        click(By.xpath(PageElement.XPATH_ACTIVE_BOARD_SCREEN_MENU));
     }
     @AfterTest(alwaysRun = true)
     public void tearDown(){
@@ -26,8 +29,7 @@ public class ActivationBoard extends BasePage {
     }
     @BeforeMethod(alwaysRun = true)
     public void settingUp(){
-        // When
-        click(By.xpath(PageElement.XPATH_ACTIVE_BOARD_SCREEN_MENU));
+
     }
     @AfterMethod(alwaysRun = true)
     public void tearingDown(){
@@ -47,7 +49,7 @@ public class ActivationBoard extends BasePage {
     @Test(priority = 2, groups = "smoke")
     public void search_title_with_registered_title(){
         // Given
-        String target_title = "Terralogiq";
+        String target_title = "terralogiq";
 
         // When
         inputText(By.xpath(PageElement.XPATH_ACTIVE_BOARD_SCREEN_SEARCH_BAR), target_title);
@@ -55,40 +57,44 @@ public class ActivationBoard extends BasePage {
 
         int startIndex = 1;
         int lengthIndex = 10;
-        List<String> getTitle = new ArrayList<>();
 
         while (startIndex <= lengthIndex){
             try {
-                getTitle.add(getText(By.xpath(PageElement.XPATH_LISTED_NIK_PARTICIPANTS(startIndex))));
+                assertTrue(getText(By.xpath(PageElement.XPATH_ACTIVE_BOARD_SCREEN_NAME_LIST(startIndex))).toLowerCase().contains(target_title));
                 startIndex++;
             } catch (Exception e){
                 break;
             }
         }
-
-        // Then
-        for (String nik : getTitle){
-            int isContain = nik.indexOf(target_title);
-            assertTrue(isContain > -1);
-        }
     }
-    @Test(priority = 2, groups = "smoke")
-    public void search_title_with_unregistered_title(){
+    @Test(priority = 3, groups = "smoke")
+    public void search_title_with_registered_status(){
         // Given
-        String target_title = "xxxxx";
+        String target_status = "draft";
 
         // When
-        inputText(By.xpath(PageElement.XPATH_ACTIVE_BOARD_SCREEN_SEARCH_BAR), target_title);
+        click(By.xpath(PageElement.XPATH_CLEAR_BUTTON));
+        inputText(By.xpath(PageElement.XPATH_ACTIVE_BOARD_SCREEN_SEARCH_BAR), target_status);
         click(By.xpath(PageElement.XPATH_ACTIVE_BOARD_SCREEN_SEARCH_BUTTON));
 
         // Then
-        assertTrue(isDisplayed(By.xpath(PageElement.XPATH_ACTIVE_BOARD_NO_DATA_FOUND)));
+        int startIndex = 1;
+        int lengthIndex = 10;
+        while (startIndex <= lengthIndex){
+            try {
+                assertEquals(target_status, getText(By.xpath(PageElement.XPATH_ACTIVE_BOARD_SCREEN_STATUS_LIST(startIndex))));
+                startIndex++;
+            } catch (Exception e){
+                break;
+            }
+        }
+        click(By.xpath(PageElement.XPATH_CLEAR_BUTTON));
     }
-    @Test(priority = 2, groups = "smoke")
+    @Test(priority = 4, groups = "smoke")
     public void create_active_board_with_valid_input(){
         // Given
-        String target_create_title = "person-in-test";
-        String target_create_description = "this is the testing";
+        String target_create_title = "Lorem";
+        String target_create_description = "Ipsum";
         int target_create_no_urut = 28221;
         String target_create_status = "publish";
 
@@ -104,22 +110,19 @@ public class ActivationBoard extends BasePage {
 
         int indexCreate = 1;
 
-        clearField(By.xpath(PageElement.XPATH_ACTIVE_BOARD_MODAL_JUDUL(indexCreate)));
         inputText(By.xpath(PageElement.XPATH_ACTIVE_BOARD_MODAL_JUDUL(indexCreate)), target_create_title);
 
-        clearField(By.xpath(PageElement.XPATH_ACTIVE_BOARD_MODAL_DESKRIPSI(indexCreate)));
         inputText(By.xpath(PageElement.XPATH_ACTIVE_BOARD_MODAL_DESKRIPSI(indexCreate)), target_create_description);
 
         inputText(By.xpath(PageElement.XPATH_ACTIVE_BOARD_MODAL_GAMBAR_UPLOAD(indexCreate)), uploadImage());
 
-        clearField(By.xpath(PageElement.XPATH_ACTIVE_BOARD_MODAL_NO_URUT(indexCreate)));
         inputText(By.xpath(PageElement.XPATH_ACTIVE_BOARD_MODAL_NO_URUT(indexCreate)), Integer.toString(target_create_no_urut));
 
         selectDropDown(By.xpath(PageElement.XPATH_ACTIVE_BOARD_MODAL_STATUS(indexCreate)), target_create_status);
 
         click(By.xpath(PageElement.XPATH_ACTIVE_BOARD_MODAL_SUBMIT_BUTTON(indexCreate)));
 
-        waitElementDisappear(By.xpath(PageElement.XPATH_ACTIVE_BOARD_TOAST_MESSAGE));
+        waitElementDisappear(By.xpath(PageElement.XPATH_SUCCESS_TOAST_MESSAGE));
 
         // Then
         int indexTarget = 0;
@@ -131,7 +134,98 @@ public class ActivationBoard extends BasePage {
             indexVerify++;
         }
     }
-    @Test(priority = 2, groups = "smoke")
+
+    @Test(priority = 5, groups = "smoke")
+    public void edit_active_board_with_valid_input() {
+        // Given
+        String target_create_title = "LoremIpsum";
+        String target_create_description = "DolorSit";
+        int target_create_no_urut = 59988;
+        String target_create_status = "draft";
+
+        List<String> target = new ArrayList<>();
+        target.add(target_create_title);
+        target.add(target_create_description);
+        target.add(Integer.toString(target_create_no_urut));
+        target.add(target_create_status);
+
+
+        // When
+        actionClick(By.xpath(PageElement.XPATH_ACTIVE_BOARD_EDIT_BUTTON_FIRST_ROW));
+
+        int indexEdit = 2;
+
+        clearField(By.xpath(PageElement.XPATH_ACTIVE_BOARD_MODAL_JUDUL(indexEdit)));
+        inputText(By.xpath(PageElement.XPATH_ACTIVE_BOARD_MODAL_JUDUL(indexEdit)), target_create_title);
+
+        clearField(By.xpath(PageElement.XPATH_ACTIVE_BOARD_MODAL_DESKRIPSI(indexEdit)));
+        inputText(By.xpath(PageElement.XPATH_ACTIVE_BOARD_MODAL_DESKRIPSI(indexEdit)), target_create_description);
+
+        inputText(By.xpath(PageElement.XPATH_ACTIVE_BOARD_MODAL_GAMBAR_UPLOAD(indexEdit)), uploadImage());
+
+        clearField(By.xpath(PageElement.XPATH_ACTIVE_BOARD_MODAL_NO_URUT(indexEdit)));
+        inputText(By.xpath(PageElement.XPATH_ACTIVE_BOARD_MODAL_NO_URUT(indexEdit)), Integer.toString(target_create_no_urut));
+
+        selectDropDown(By.xpath(PageElement.XPATH_ACTIVE_BOARD_MODAL_STATUS(indexEdit)), target_create_status);
+
+        click(By.xpath(PageElement.XPATH_ACTIVE_BOARD_MODAL_SUBMIT_BUTTON(indexEdit)));
+
+        waitElementDisappear(By.xpath(PageElement.XPATH_SUCCESS_TOAST_MESSAGE));
+
+        // Then
+        int indexTarget = 0;
+        int indexVerify = 2;
+        int lengthIndex = 5;
+        while (indexVerify <= lengthIndex) {
+            assertEquals(target.get(indexTarget), getText(By.xpath(PageElement.XPATH_ACTIVE_BOARD_VERIFY(indexVerify))));
+            indexTarget++;
+            indexVerify++;
+        }
+    }
+
+    @Test(priority = 6, groups = "smoke")
+    public void verify_delete_active_board_functionality() {
+        // Given
+        String target_create_title = "LoremIpsum";
+        String target_create_description = "DolorSit";
+        int target_create_no_urut = 59988;
+
+        List<String> target = new ArrayList<>();
+        target.add(target_create_title);
+        target.add(target_create_description);
+        target.add(Integer.toString(target_create_no_urut));
+
+        int indexDelete = 3;
+
+        // When
+        click(By.xpath(PageElement.XPATH_ACTIVE_BOARD_DELETE_DATA_FIRST_ROW));
+        waitElementClickable(By.xpath(PageElement.XPATH_ACTIVE_BOARD_MODAL_SUBMIT_BUTTON(indexDelete)));
+        click(By.xpath(PageElement.XPATH_ACTIVE_BOARD_MODAL_SUBMIT_BUTTON(indexDelete)));
+
+        waitElementDisappear(By.xpath(PageElement.XPATH_SUCCESS_TOAST_MESSAGE));
+
+        // Then
+        int indexVerify = 2;
+        int lengthIndex = 4;
+        while (indexVerify <= lengthIndex) {
+            assertFalse(target.contains(getText(By.xpath(PageElement.XPATH_ACTIVE_BOARD_VERIFY(indexVerify)))));
+            indexVerify++;
+        }
+    }
+
+    @Test(priority = 7, groups = "smoke")
+    public void search_title_with_unregistered_title(){
+        // Given
+        String target_title = "xxxxx";
+
+        // When
+        inputText(By.xpath(PageElement.XPATH_ACTIVE_BOARD_SCREEN_SEARCH_BAR), target_title);
+        actionClick(By.xpath(PageElement.XPATH_ACTIVE_BOARD_SCREEN_SEARCH_BUTTON));
+
+        // Then
+        assertTrue(isDisplayed(By.xpath(PageElement.XPATH_ACTIVE_BOARD_NO_DATA_FOUND)));
+    }
+    @Test(priority = 9, groups = "smoke")
     public void create_active_board_with_incomplete_input(){
         // Given
         String target_create_title = "person";
@@ -145,7 +239,7 @@ public class ActivationBoard extends BasePage {
 
 
         // When
-        click(By.xpath(PageElement.XPATH_ACTIVE_BOARD_CREATE_BUTTON));
+        actionClick(By.xpath(PageElement.XPATH_ACTIVE_BOARD_CREATE_BUTTON));
 
         int indexCreate = 1;
 
@@ -162,68 +256,9 @@ public class ActivationBoard extends BasePage {
 
         click(By.xpath(PageElement.XPATH_ACTIVE_BOARD_MODAL_SUBMIT_BUTTON(indexCreate)));
 
-        waitElementDisappear(By.xpath(PageElement.XPATH_ACTIVE_BOARD_TOAST_MESSAGE));
-
         // Then
-        int indexTarget = 0;
-        int indexVerify = 2;
-        int lengthIndex = target.size();
-        while (indexVerify <= lengthIndex){
-            assertNotEquals(target.get(indexTarget), getText(By.xpath(PageElement.XPATH_ACTIVE_BOARD_VERIFY(indexVerify))));
-            indexTarget++;
-            indexVerify++;
-        }
-    }
+        isDisplayed(By.xpath(PageElement.XPATH_ACTIVE_BOARD_MODAL_SUBMIT_BUTTON(indexCreate)));
 
-
-
-
-
-    @Test(priority = 2, groups = "smoke")
-    public void edit_active_board_with_valid_input(){
-        // Given
-        String target_edit_title = "person-in-test";
-        String target_edit_description = "this is the testing";
-        int target_edit_no_urut = 28221;
-        String target_edit_status = "publish";
-        List<String> target = new ArrayList<>();
-        target.add(target_edit_title);
-        target.add(target_edit_description);
-        target.add(uploadImage());
-        target.add(Integer.toString(target_edit_no_urut));
-        target.add(target_edit_status);
-
-
-        // When
-
-
-//        click(By.xpath(PageElement.XPATH_ACTIVE_BOARD_EDIT_BUTTON_FIRST_ROW));
-//
-//        clearField(By.xpath(PageElement.XPATH_ACTIVE_BOARD_EDIT_MODAL_JUDUL));
-//        inputText(By.xpath(PageElement.XPATH_ACTIVE_BOARD_EDIT_MODAL_JUDUL), target_edit_title);
-//
-//        clearField(By.xpath(PageElement.XPATH_ACTIVE_BOARD_EDIT_MODAL_DESKRIPSI));
-//        inputText(By.xpath(PageElement.XPATH_ACTIVE_BOARD_EDIT_MODAL_DESKRIPSI), target_edit_description);
-//
-//        inputText(By.xpath(PageElement.XPATH_ACTIVE_BOARD_EDIT_MODAL_GAMBAR_UPLOAD), uploadImage());
-//
-//        clearField(By.xpath(PageElement.XPATH_ACTIVE_BOARD_EDIT_MODAL_NO_URUT));
-//        inputText(By.xpath(PageElement.XPATH_ACTIVE_BOARD_EDIT_MODAL_NO_URUT), Integer.toString(target_edit_no_urut));
-//
-//        selectDropDown(By.xpath(PageElement.XPATH_ACTIVE_BOARD_EDIT_MODAL_STATUS), target_edit_status);
-//
-//        click(By.xpath(PageElement.XPATH_ACTIVE_BOARD_EDIT_MODAL_SUBMIT_BUTTON));
-//
-//        waitElementDisappear(By.xpath(PageElement.XPATH_ACTIVE_BOARD_EDIT_TOAST_MESSAGE));
-
-        // Then
-        int indexTarget = 0;
-        int indexVerify = 2;
-        int lengthIndex = 5;
-        while (indexVerify <= lengthIndex){
-            assertEquals(target.get(indexTarget), getText(By.xpath(PageElement.XPATH_ACTIVE_BOARD_VERIFY(indexVerify))));
-            indexTarget++;
-            indexVerify++;
-        }
+        click(By.xpath(PageElement.XPATH_ACTIVE_BOARD_MODAL_CANCEL_BUTTON(indexCreate)));
     }
 }

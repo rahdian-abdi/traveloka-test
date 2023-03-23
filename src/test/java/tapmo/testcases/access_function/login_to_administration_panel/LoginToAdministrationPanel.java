@@ -1,5 +1,7 @@
 package tapmo.testcases.access_function.login_to_administration_panel;
 
+import io.qameta.allure.Allure;
+import io.qameta.allure.Description;
 import org.openqa.selenium.By;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -17,7 +19,7 @@ public class LoginToAdministrationPanel extends BasePage {
     @BeforeMethod(alwaysRun = true)
     public void setUp(){
         initiateDriver();
-        navigateUrl(BASE_URL);
+        navigateUrl(LOGIN);
         LOGIN_URL = "http://tapfe.terralogiq.net:3001/login";
         DASHBOARD_URL = "http://tapfe.terralogiq.net:3001/dashboard";
     }
@@ -25,17 +27,21 @@ public class LoginToAdministrationPanel extends BasePage {
     public void tearDown(){
         closeDriver();
     }
-    @Test(priority = 1, groups = "smoke")
+    @Description("Login with Valid Credentials")
+    @Test(priority = 1, groups = "smoke", description = "Login with Valid Credentials")
     public void login_with_valid_credentials(){
         // Given
+        Allure.step("User Input Credentials");
         inputText(By.cssSelector(PageElement.CSS_INPUT_USERNAME_FIELD), "superadmin@gmail.com");
         inputText(By.cssSelector(PageElement.CSS_INPUT_PASSWORD_FIELD), "superadmin");
 
         // When
+        Allure.step("User Click Login Button");
         click(By.cssSelector(PageElement.CSS_LOGIN_BUTTON));
         waitWebToLoad(DASHBOARD_URL);
 
         // Then
+        Allure.step("User Directed to Dashboard");
         assertEquals(DASHBOARD_URL, getUrl());
         assertTrue(isDisplayed(By.xpath(PageElement.XPATH_DASHBOARD_MENU)));
     }
