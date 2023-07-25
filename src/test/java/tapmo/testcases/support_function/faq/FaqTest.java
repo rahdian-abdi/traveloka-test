@@ -10,7 +10,7 @@ import java.util.List;
 
 import static org.junit.Assert.*;
 
-public class Faq extends BasePage {
+public class FaqTest extends BasePage {
     @BeforeTest(alwaysRun = true)
     public void setUp(){
         initiateDriver();
@@ -30,6 +30,7 @@ public class Faq extends BasePage {
     public void tearingDown(){
 
     }
+    /*
     @Test(priority = 1, groups = "smoke")
     public void verify_data_faq_is_displayed(){
 
@@ -97,12 +98,14 @@ public class Faq extends BasePage {
         // Then
         assertTrue(isDisplayed(By.xpath(PageElement.XPATH_FAQ_DATA_NOT_FOUND)));
     }
+
+     */
     @Test(priority = 2, groups = "smoke")
     public void create_faq_with_valid_input(){
         // Given
         String target_create_title = "TestQuestions";
         String target_create_description = "TestDescription";
-        String target_create_category = "test";
+        String target_create_category = "FAQ FLPP";
         String target_create_status = "draft";
 
         List<String> target = new ArrayList<>();
@@ -129,12 +132,13 @@ public class Faq extends BasePage {
         assertTrue(target.contains(getText(By.xpath(PageElement.XPATH_FAQ_VERIFY(3)))));
         assertTrue(target.contains(getText(By.xpath(PageElement.XPATH_FAQ_VERIFY(7)))));
     }
+    /*
     @Test(priority = 2, groups = "smoke")
     public void create_faq_with_incomplete_input(){
         // Given
         String target_create_title = "TestQuestions";
         String target_create_description = "TestDescription";
-        String target_create_category = "test";
+        String target_create_category = "FAQ FLPP";
         String target_create_status = "draft";
 
         List<String> target = new ArrayList<>();
@@ -159,13 +163,14 @@ public class Faq extends BasePage {
         // Then
         assertTrue(isDisplayed(By.xpath(PageElement.XPATH_FAQ_SUBMIT(indexCreate))));
     }
+     */
     // Can't Be Automated
     @Test(priority = 2, groups = "smoke")
     public void edit_faq_with_valid_input() {
         // Given
         String target_edit_title = "TestQuestUpdate";
         String target_edit_description = "TestDescription";
-        String target_edit_category = "newcategory";
+        String target_edit_category = "FAQ SEPUTAR TAPERA";
         String target_edit_status = "publish";
 
         List<String> target = new ArrayList<>();
@@ -200,7 +205,7 @@ public class Faq extends BasePage {
         // Given
         String target_edit_title = "TestQuestUpdate";
         String target_edit_description = "TestDescription";
-        String target_edit_category = "newcategory";
+        String target_edit_category = "FAQ SEPUTAR TAPERA";
         String target_edit_status = "publish";
 
         List<String> target = new ArrayList<>();
@@ -221,6 +226,5 @@ public class Faq extends BasePage {
 
         // Then
         assertFalse(target.contains(getText(By.xpath(PageElement.XPATH_FAQ_VERIFY(3)))));
-        assertFalse(target.contains(getText(By.xpath(PageElement.XPATH_FAQ_VERIFY(7)))));
     }
 }

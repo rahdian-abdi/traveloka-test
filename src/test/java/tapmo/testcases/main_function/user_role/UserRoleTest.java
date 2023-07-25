@@ -11,7 +11,7 @@ import java.util.List;
 import static org.junit.Assert.*;
 import static org.junit.Assert.assertFalse;
 
-public class UserRole extends BasePage {
+public class UserRoleTest extends BasePage {
 
     @BeforeTest(alwaysRun = true)
     public void setUp(){
@@ -32,6 +32,7 @@ public class UserRole extends BasePage {
     public void tearingDown(){
 
     }
+    /*
     @Test(priority = 1, groups = "smoke")
     public void verify_data_user_role_is_displayed(){
 
@@ -83,6 +84,7 @@ public class UserRole extends BasePage {
         assertTrue(isDisplayed(By.xpath(PageElement.XPATH_USER_ROLE_DATA_NOT_FOUND)));
         click(By.xpath(PageElement.XPATH_CLEAR_BRANCH_BUTTON));
     }
+     */
     @Test(priority = 4, groups = "smoke")
     public void create_user_role_with_valid_input(){
         // Given

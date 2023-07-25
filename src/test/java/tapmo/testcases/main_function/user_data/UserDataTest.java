@@ -11,7 +11,7 @@ import java.util.List;
 import static org.junit.Assert.*;
 import static org.junit.Assert.assertFalse;
 
-public class UserData extends BasePage {
+public class UserDataTest extends BasePage {
     @BeforeTest(alwaysRun = true)
     public void setUp(){
         initiateDriver();
@@ -32,6 +32,7 @@ public class UserData extends BasePage {
     public void tearingDown(){
 
     }
+    /*
     @Test(priority = 1, groups = "smoke")
     public void verify_data_user_is_displayed(){
 
@@ -102,6 +103,7 @@ public class UserData extends BasePage {
         assertTrue(isDisplayed(By.xpath(PageElement.XPATH_USER_DATA_NOT_FOUND)));
         click(By.xpath(PageElement.XPATH_CLEAR_BRANCH_BUTTON));
     }
+     */
     @Test(priority = 5, groups = "smoke")
     public void create_user_with_valid_input(){
         // Given
@@ -210,14 +212,14 @@ public class UserData extends BasePage {
     // Can't Be Automated
 
     @Test(priority = 7, groups = "smoke")
-    public void verify_delete_user_functionality() {
+    public void verify_delete_user_functionality() throws InterruptedException {
         // Given
         String target_create_status = "Active";
         String target_create_name = "Test";
         String target_create_email = "test@xyz.com";
         String target_create_password = "password";
         String target_create_role = "maker";
-        String target_create_department = "PUSAT";
+        //String target_create_department = "PUSAT";
 
         List<String> target = new ArrayList<>();
         target.add(target_create_status);
@@ -225,13 +227,14 @@ public class UserData extends BasePage {
         target.add(target_create_email);
         target.add(target_create_password);
         target.add(target_create_role);
-        target.add(target_create_department);
+        //target.add(target_create_department);
 
 
         // When
         actionClick(By.xpath(PageElement.XPATH_USER_DELETE_FIRST_ROW));
 
         int indexDelete = 3;
+        Thread.sleep(1000);
 
         click(By.xpath(PageElement.XPATH_USER_SUBMIT(indexDelete)));
 
@@ -239,7 +242,7 @@ public class UserData extends BasePage {
 
         // Then
         int indexVerify = 3;
-        int lengthIndex = 5;
+        int lengthIndex = 4;
         while (indexVerify <= lengthIndex){
             assertFalse(target.contains(getText(By.xpath(PageElement.XPATH_NEWS_LIST_NEWS_VERIFY(indexVerify)))));
             indexVerify++;

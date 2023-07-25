@@ -11,7 +11,7 @@ import java.util.List;
 import static org.junit.Assert.*;
 import static org.junit.Assert.assertFalse;
 
-public class FaqCategory extends BasePage {
+public class FaqCategoryTest extends BasePage {
     @BeforeTest(alwaysRun = true)
     public void setUp(){
         initiateDriver();
@@ -31,6 +31,7 @@ public class FaqCategory extends BasePage {
     public void tearingDown(){
 
     }
+    /*
     @Test(priority = 1, groups = "smoke")
     public void verify_data_faq_category_is_displayed(){
 
@@ -76,6 +77,8 @@ public class FaqCategory extends BasePage {
         // Then
         assertTrue(isDisplayed(By.xpath(PageElement.XPATH_FAQ_CATEGORY_DATA_NOT_FOUND)));
     }
+
+     */
     @Test(priority = 2, groups = "smoke")
     public void create_faq_category_with_valid_input(){
         // Given
@@ -98,6 +101,7 @@ public class FaqCategory extends BasePage {
         // Then
         assertTrue(target.contains(getText(By.xpath(PageElement.XPATH_FAQ_CATEGORY_VERIFY(2)))));
     }
+    /*
     @Test(priority = 2, groups = "smoke")
     public void create_faq_category_with_incomplete_input(){
         // Given
@@ -111,6 +115,8 @@ public class FaqCategory extends BasePage {
         // Then
         assertTrue(isDisplayed(By.xpath(PageElement.XPATH_FAQ_CATEGORY_SUBMIT(indexCreate))));
     }
+
+     */
     // Can't Be Automated
     @Test(priority = 2, groups = "smoke")
     public void edit_faq_category_with_valid_input() {

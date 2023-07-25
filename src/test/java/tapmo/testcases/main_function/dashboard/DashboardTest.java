@@ -9,7 +9,7 @@ import tapmo.pageobject.BasePage;
 
 import static org.junit.Assert.assertTrue;
 
-public class Dashboard extends BasePage {
+public class DashboardTest extends BasePage {
     @BeforeMethod(alwaysRun = true)
     public void setUp(){
         initiateDriver();

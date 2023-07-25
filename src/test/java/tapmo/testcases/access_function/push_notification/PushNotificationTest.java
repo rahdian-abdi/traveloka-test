@@ -10,7 +10,7 @@ import tapmo.pageobject.BasePage;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-public class PushNotification extends BasePage {
+public class PushNotificationTest extends BasePage {
     @BeforeMethod(alwaysRun = true)
     public void setUp(){
         initiateDriver();

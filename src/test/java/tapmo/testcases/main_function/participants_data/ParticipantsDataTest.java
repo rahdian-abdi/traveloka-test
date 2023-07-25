@@ -10,7 +10,7 @@ import java.util.List;
 
 import static org.junit.Assert.*;
 
-public class ParticipantsData extends BasePage {
+public class ParticipantsDataTest extends BasePage {
     @BeforeTest(alwaysRun = true)
     public void setUp(){
         initiateDriver();

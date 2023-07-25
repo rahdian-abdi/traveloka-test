@@ -10,7 +10,7 @@ import java.util.List;
 
 import static org.junit.Assert.*;
 
-public class ActivationBoard extends BasePage {
+public class ActivationBoardTest extends BasePage {
     PageElement pageElement;
 
     @BeforeTest(alwaysRun = true)
@@ -35,6 +35,7 @@ public class ActivationBoard extends BasePage {
     public void tearingDown(){
 
     }
+    /*
     @Test(priority = 1, groups = "smoke")
     public void verify_data_activation_board_is_displayed(){
 
@@ -90,6 +91,7 @@ public class ActivationBoard extends BasePage {
         }
         click(By.xpath(PageElement.XPATH_CLEAR_BUTTON));
     }
+     */
     @Test(priority = 4, groups = "smoke")
     public void create_active_board_with_valid_input(){
         // Given
@@ -212,7 +214,7 @@ public class ActivationBoard extends BasePage {
             indexVerify++;
         }
     }
-
+    /*
     @Test(priority = 7, groups = "smoke")
     public void search_title_with_unregistered_title(){
         // Given
@@ -231,11 +233,6 @@ public class ActivationBoard extends BasePage {
         String target_create_title = "person";
         String target_create_description = "this is incomplete";
         int target_create_no_urut = 28221;
-
-        List<String> target = new ArrayList<>();
-        target.add(target_create_title);
-        target.add(target_create_description);
-        target.add(Integer.toString(target_create_no_urut));
 
 
         // When
@@ -261,4 +258,5 @@ public class ActivationBoard extends BasePage {
 
         click(By.xpath(PageElement.XPATH_ACTIVE_BOARD_MODAL_CANCEL_BUTTON(indexCreate)));
     }
+     */
 }

@@ -22,7 +22,7 @@ import static org.junit.Assert.assertEquals;
 public class BasePage {
     public WebDriver driver;
     public String LOGIN;
-    public String BASE = "http://tapfe.terralogiq.net:3001";
+    public String BASE = "https://tapfe.terralogiq.net";
     public void initiateDriver(){
         ChromeOptions option = new ChromeOptions();
         option.addArguments("--remote-allow-origins=*","ignore-certificate-errors");

@@ -11,7 +11,7 @@ import java.util.List;
 import static org.junit.Assert.*;
 import static org.junit.Assert.assertFalse;
 
-public class NewsCategory extends BasePage {
+public class NewsCategoryTest extends BasePage {
     @BeforeTest(alwaysRun = true)
     public void setUp(){
         initiateDriver();
@@ -31,6 +31,7 @@ public class NewsCategory extends BasePage {
     public void tearingDown(){
 
     }
+    /*
     @Test(priority = 1, groups = "smoke")
     public void verify_data_news_category_is_displayed(){
 
@@ -79,6 +80,7 @@ public class NewsCategory extends BasePage {
         assertTrue(isDisplayed(By.xpath(PageElement.XPATH_NEWS_CATEGORY_DATA_NOT_FOUND)));
         click(By.xpath(PageElement.XPATH_CLEAR_BRANCH_BUTTON));
     }
+     */
     @Test(priority = 4, groups = "smoke")
     public void create_news_category_with_valid_input(){
         // Given

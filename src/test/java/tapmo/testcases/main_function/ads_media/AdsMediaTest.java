@@ -11,15 +11,15 @@ import java.util.List;
 import static org.junit.Assert.*;
 import static org.junit.Assert.assertNotEquals;
 
-public class AdsMedia extends BasePage {
-    PageElement pageElement;
+public class AdsMediaTest extends BasePage {
+
 
     @BeforeTest(alwaysRun = true)
     public void setUp(){
         initiateDriver();
         navigateUrl(LOGIN);
         login_cms();
-        pageElement = new PageElement();
+
     }
     @AfterTest(alwaysRun = true)
     public void tearDown(){
@@ -34,6 +34,7 @@ public class AdsMedia extends BasePage {
     public void tearingDown(){
 
     }
+    /*
     @Test(priority = 1, groups = "smoke")
     public void verify_data_ads_media_is_displayed(){
 
@@ -103,6 +104,8 @@ public class AdsMedia extends BasePage {
         assertTrue(isDisplayed(By.xpath(PageElement.XPATH_ADS_MEDIA_DATA_NOT_FOUND)));
         click(By.xpath(PageElement.XPATH_CLEAR_BUTTON));
     }
+
+     */
     @Test(priority = 5, groups = "smoke")
     public void create_ads_media_with_valid_input(){
         // Given

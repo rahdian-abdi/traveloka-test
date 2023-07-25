@@ -12,7 +12,7 @@ import tapmo.pageobject.BasePage;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-public class LoginToAdministrationPanel extends BasePage {
+public class LoginToAdministrationPanelTest extends BasePage {
     public String DASHBOARD_URL;
     public String LOGIN_URL;
 
@@ -20,8 +20,8 @@ public class LoginToAdministrationPanel extends BasePage {
     public void setUp(){
         initiateDriver();
         navigateUrl(LOGIN);
-        LOGIN_URL = "http://tapfe.terralogiq.net:3001/login";
-        DASHBOARD_URL = "http://tapfe.terralogiq.net:3001/dashboard";
+        LOGIN_URL = "https://tapfe.terralogiq.net/login";
+        DASHBOARD_URL = "https://tapfe.terralogiq.net/dashboard";
     }
     @AfterMethod(alwaysRun = true)
     public void tearDown(){
