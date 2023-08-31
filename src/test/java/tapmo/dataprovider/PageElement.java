@@ -143,7 +143,7 @@ public class PageElement extends BasePage {
         return "//*[@id=\"__next\"]/div[1]/div/div[2]/div[2]/div[4]/div[2]/div/table/tbody/tr[1]/td["+3+"]";
     }
 
-    public static String XPATH_NEWS_LIST_MENU = "//*[@id=\"__next\"]/div[1]/div/div[1]/div/div[2]/ul/div[5]/div/div[2]/ul/div[1]/li";
+    public static String XPATH_NEWS_LIST_MENU = "//*[@id=\"__next\"]/div[2]/div/div[1]/div/div[2]/ul/div[5]/div/div[2]/ul/div[1]/li/a";
     public static String XPATH_NEWS_LIST_SEARCH_BAR = "//*[@id=\"__next\"]/div[1]/div/div[2]/div[2]/div[4]/div/div[1]/div/div/input";
     public static String XPATH_NEWS_LIST_SEARCH_BUTTON = "//*[@id=\"__next\"]/div[1]/div/div[2]/div[2]/div[4]/div/div[1]/div/button";
     public static String XPATH_NEWS_LIST_DATA_NOT_FOUND = "//*[@id=\"__next\"]/div[1]/div/div[2]/div[2]/div[4]/div/div[2]/p";
@@ -156,7 +156,7 @@ public class PageElement extends BasePage {
     public static String XPATH_NEWS_LIST_STATUS_LIST(int i){
         return "//*[@id=\"__next\"]/div[1]/div/div[2]/div[2]/div[4]/div/div[2]/div/table/tbody/tr["+i+"]/td[5]";
     }
-    public static String XPATH_NEWS_LIST_NEW_NEWS_BUTTON = "//*[@id=\"__next\"]/div[1]/div/div[2]/div[2]/div[4]/div/div[1]/button";
+    public static String XPATH_NEWS_LIST_NEW_NEWS_BUTTON = "//*[@id=\"__next\"]/div[2]/div/div[2]/div[2]/div[4]/div/div[1]/button";
     public static String XPATH_NEWS_LIST_EDIT_NEWS_FIRST_ROW = "//*[@id=\"__next\"]/div[1]/div/div[2]/div[2]/div[4]/div/div[2]/div/table/tbody/tr[1]/td[6]/div/button[2]";
     public static String XPATH_NEWS_LIST_DELETE_NEWS_FIRST_ROW = "//*[@id=\"__next\"]/div[1]/div/div[2]/div[2]/div[4]/div/div[2]/div/table/tbody/tr[1]/td[6]/div/button[1]";
 
@@ -306,14 +306,14 @@ public class PageElement extends BasePage {
         return "//*[@id=\"__next\"]/div[1]/div/div[2]/div[2]/div[4]/div/div[2]/div/table/tbody/tr[1]/td["+i+"]";
     }
 
-    public static String XPATH_FAQ_CATEGORY_MENU = "//*[@id=\"__next\"]/div[1]/div/div[1]/div/div[2]/ul/div[7]/div/div[2]/ul/div[2]/li";
+    public static String XPATH_FAQ_CATEGORY_MENU = "//*[@id=\"__next\"]/div[2]/div/div[1]/div/div[2]/ul/div[7]/div/div[2]/ul/div[2]/li/a";
     public static String XPATH_FAQ_CATEGORY_SEARCH_BAR = "//*[@id=\"__next\"]/div[1]/div/div[2]/div[2]/div[4]/div/div[1]/div/div/input";
     public static String XPATH_FAQ_CATEGORY_SEARCH_BUTTON = "//*[@id=\"__next\"]/div[1]/div/div[2]/div[2]/div[4]/div/div[1]/div/button";
     public static String XPATH_FAQ_CATEGORY_DATA_NOT_FOUND = "//*[@id=\"__next\"]/div[1]/div/div[2]/div[2]/div[4]/div/div[2]/p";
     public static String XPATH_FAQ_CATEGORY_TITLE_LIST(int i){
         return "//*[@id=\"__next\"]/div[1]/div/div[2]/div[2]/div[4]/div/div[2]/div/table/tbody/tr["+i+"]/td[2]";
     }
-    public static String XPATH_FAQ_CATEGORY_CREATE_BUTTON = "//*[@id=\"__next\"]/div[1]/div/div[2]/div[2]/div[4]/div/div[1]/button";
+    public static String XPATH_FAQ_CATEGORY_CREATE_BUTTON = "//*[@id=\"__next\"]/div[2]/div/div[2]/div[2]/div[4]/div/div[1]/button";
     public static String XPATH_FAQ_CATEGORY_EDIT_FIRST_ROW = "//*[@id=\"__next\"]/div[1]/div/div[2]/div[2]/div[4]/div/div[2]/div/table/tbody/tr[1]/td[5]/div/button[2]";
     public static String XPATH_FAQ_CATEGORY_DELETE_FIRST_ROW = "//*[@id=\"__next\"]/div[1]/div/div[2]/div[2]/div[4]/div/div[2]/div/table/tbody/tr[1]/td[5]/div/button[1]";
     public static String XPATH_FAQ_CATEGORY_TITLE(int i){
