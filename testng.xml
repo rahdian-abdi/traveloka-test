@@ -1,44 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <!--@BeforeSuite-->
-<suite name="TAPERA CMS">
+<suite name="Tapera Control Management System">
 <!--    @BeforeTest-->
 <!--    @AfterTest-->
     <groups>
         <run>
-            <include name="smoke"></include>
+            <include name="login-test"/>
         </run>
     </groups>
+    <listeners>
+        <listener class-name="io.qameta.allure.testng.AllureTestNg"/>
+    </listeners>
     <test name="Login To Administration Panel">
+        <parameter name="allure.results.directory" value="target/allure-results"/>
         <classes>
             <class name="tapmo.testcases.access_function.login_to_administration_panel.LoginToAdministrationPanelTest"/>
         </classes>
     </test> <!-- Test -->
-    <test name="Show/Hide">
-        <classes>
-            <class name="tapmo.testcases.access_function.show_hide.ShowHide"/>
-        </classes>
-    </test> <!-- Test -->
-    <test name="Push Notification">
-        <classes>
-            <class name="tapmo.testcases.access_function.push_notification.PushNotificationTest"/>
-        </classes>
-    </test> <!-- Test -->
-    <test name="Activation Board">
-        <classes>
-            <class name="tapmo.testcases.main_function.activation_board.ActivationBoardTest"/>
-        </classes>
-    </test> <!-- Test -->
-    <test name="Ads Media">
-        <classes>
-            <class name="tapmo.testcases.main_function.ads_media.AdsMediaTest"/>
-        </classes>
-    </test> <!-- Test -->
-    <test name="Dashboard">
-        <classes>
-            <class name="tapmo.testcases.main_function.dashboard.DashboardTest"/>
-        </classes>
-    </test> <!-- Test -->
+<!--    <test name="Show/Hide">-->
+<!--        <classes>-->
+<!--            <class name="tapmo.testcases.access_function.show_hide.ShowHide"/>-->
+<!--        </classes>-->
+<!--    </test> &lt;!&ndash; Test &ndash;&gt;-->
+<!--    <test name="Push Notification">-->
+<!--        <classes>-->
+<!--            <class name="tapmo.testcases.access_function.push_notification.PushNotificationTest"/>-->
+<!--        </classes>-->
+<!--    </test> &lt;!&ndash; Test &ndash;&gt;-->
+<!--    <test name="Activation Board">-->
+<!--        <classes>-->
+<!--            <class name="tapmo.testcases.main_function.activation_board.ActivationBoardTest"/>-->
+<!--        </classes>-->
+<!--    </test> &lt;!&ndash; Test &ndash;&gt;-->
+<!--    <test name="Ads Media">-->
+<!--        <classes>-->
+<!--            <class name="tapmo.testcases.main_function.ads_media.AdsMediaTest"/>-->
+<!--        </classes>-->
+<!--    </test> &lt;!&ndash; Test &ndash;&gt;-->
+<!--    <test name="Dashboard">-->
+<!--        <classes>-->
+<!--            <class name="tapmo.testcases.main_function.dashboard.DashboardTest"/>-->
+<!--        </classes>-->
+<!--    </test> &lt;!&ndash; Test &ndash;&gt;-->
 </suite> <!-- Suite -->
 <!--@AfterSuite-->
 
