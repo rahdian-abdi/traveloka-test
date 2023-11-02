@@ -1,5 +1,6 @@
 package tapmo.testcases.access_function.show_hide;
 
+import io.qameta.allure.*;
 import org.openqa.selenium.By;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -9,7 +10,7 @@ import tapmo.pageobject.BasePage;
 
 import static org.junit.Assert.assertEquals;
 
-public class ShowHide extends BasePage {
+public class ShowHidePasswordTest extends BasePage {
     @BeforeMethod(alwaysRun = true)
     public void setUp(){
         initiateDriver();
@@ -19,7 +20,11 @@ public class ShowHide extends BasePage {
     public void tearDown(){
         closeDriver();
     }
-    @Test(priority = 1, groups = "smoke")
+    @Feature("Authentications")
+    @Story("User need to login")
+    @Severity(SeverityLevel.CRITICAL)
+    @Description("Show/Hide Password Functionality")
+    @Test(priority = 1, groups = "login-test", description = "Show/Hide Password Functionality")
     public void verify_show_hide_password_functionality_is_working(){
         // Given
         assertEquals("password", getAttributeType(By.cssSelector(PageElement.CSS_INPUT_PASSWORD_FIELD)));

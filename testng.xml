@@ -18,11 +18,11 @@
             <class name="tapmo.testcases.access_function.login_to_administration_panel.LoginToAdministrationPanelTest"/>
         </classes>
     </test> <!-- Test -->
-<!--    <test name="Show/Hide">-->
-<!--        <classes>-->
-<!--            <class name="tapmo.testcases.access_function.show_hide.ShowHide"/>-->
-<!--        </classes>-->
-<!--    </test> &lt;!&ndash; Test &ndash;&gt;-->
+    <test name="Show/Hide">
+        <classes>
+            <class name="tapmo.testcases.access_function.show_hide.ShowHidePasswordTest"/>
+        </classes>
+    </test> <!-- Test -->
 <!--    <test name="Push Notification">-->
 <!--        <classes>-->
 <!--            <class name="tapmo.testcases.access_function.push_notification.PushNotificationTest"/>-->
