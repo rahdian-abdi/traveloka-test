@@ -40,7 +40,7 @@ After the test execution completes successfully, generate and view the Allure re
 1. Generate the Allure report:
 
     ```bash
-    allure serve target/allure-results
+    allure serve allure-results
     ```
 
 2. Open the generated report in your browser (usually accessible at http://localhost:64510).
