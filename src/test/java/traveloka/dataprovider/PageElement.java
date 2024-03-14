@@ -3,6 +3,8 @@ package traveloka.dataprovider;
 import org.openqa.selenium.By;
 import traveloka.pageobject.BasePage;
 
+import java.util.Random;
+
 public class PageElement extends BasePage {
     public void goToCarService(){
         click(By.xpath("//div[contains(text(), 'Car Rental')]"));
@@ -19,21 +21,14 @@ public class PageElement extends BasePage {
     }
     public void selectPickUpTime(){
         click(By.xpath("//input[@data-testid=\"rental-search-form-date-input-start\"]"));
-        click(By.xpath("//div[@class=\"css-901oao r-cwxd7f r-t1w4ow r-1b43r93 r-majxgm r-rjixqe r-q4m81j\" and text()=\"16\"]"));
         takeScreenshot();
     }
     public void selectDropOffDate() throws InterruptedException {
         click(By.xpath("//input[@data-testid=\"rental-search-form-date-input-end\"]"));
-        click(By.xpath("//*[@id=\"__next\"]/div[4]/div[2]/div[1]/div[2]/div/div[3]/div/div/div/div/div[2]/div/div[7]/div/div[2]/div/div/div/div/div/div[1]/div/div[1]/div[3]/div[23]/div/div/div[2]/div[2]/div"));
-        click(By.xpath("//input[@data-testid=\"rental-search-form-time-input-end\"]"));
-        Thread.sleep(1000);
-        click(By.xpath("//*[@id=\"__next\"]/div[4]/div[2]/div[1]/div[2]/div/div[3]/div/div/div/div/div[2]/div/div[9]/div/div[2]/div/div/div[1]/div[1]/div[2]/div/div/div[12]/div[1]"));
-        click(By.xpath("//*[@id=\"__next\"]/div[4]/div[2]/div[1]/div[2]/div/div[3]/div/div/div/div/div[2]/div/div[9]/div/div[2]/div/div/div[2]/div/div"));
         takeScreenshot();
     }
     public void searchCar() throws InterruptedException {
         click(By.xpath("//*[@data-testid=\"rental-search-form-cta\"]"));
-        // click(By.xpath("//*[@id=\"__next\"]/div[6]/div/div[2]/div/div/div[4]/div[9]/div/div[2]/div[2]"));
         Thread.sleep(5000);
     }
     public void selectCar(){
@@ -76,15 +71,21 @@ public class PageElement extends BasePage {
         Thread.sleep(10000); // Human Intervene
     }
     public void fillContactDetails(){
+        Random random = new Random();
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < 6; i++) {
+            char randomChar = (char) ('a' + random.nextInt(26));
+            sb.append(randomChar);
+        }
         inputText(By.xpath("//*[@id=\"__next\"]/div[2]/div[2]/div[1]/div[2]/div/div/div/div[2]/div[1]/div/div[1]/input"), "Rahdian Abdi");
-        inputText(By.xpath("//*[@id=\"__next\"]/div[2]/div[2]/div[1]/div[2]/div/div/div/div[2]/div[2]/div[1]/div[1]/input"), "81676095");
-        inputText(By.xpath("//*[@id=\"__next\"]/div[2]/div[2]/div[1]/div[2]/div/div/div/div[2]/div[2]/div[2]/div/div[1]/input"), "rahdian@mail.com");
+        inputText(By.xpath("//*[@id=\"__next\"]/div[2]/div[2]/div[1]/div[2]/div/div/div/div[2]/div[2]/div[1]/div[1]/input"), "81234567891");
+        inputText(By.xpath("//*[@id=\"__next\"]/div[2]/div[2]/div[1]/div[2]/div/div/div/div[2]/div[2]/div[2]/div/div[1]/input"), "rahdian.abdi@"+sb.toString()+".com");
         takeScreenshot();
     }
     public void fillDriverDetails(){
         selectDropDown(By.xpath("//*[@id=\"adultForm0\"]/div/div/div[2]/div[1]/div/div/select"), "Mr.");
         inputText(By.xpath("//*[@id=\"adultForm0\"]/div/div/div[2]/div[2]/div/div[1]/input"), "Rahdian Abdi");
-        inputText(By.xpath("//*[@id=\"adultForm0\"]/div/div/div[2]/div[3]/div[1]/input"), "816764095");
+        inputText(By.xpath("//*[@id=\"adultForm0\"]/div/div/div[2]/div[3]/div[1]/input"), "81234567891");
         takeScreenshot();
         scrollDown();
     }
@@ -114,10 +115,8 @@ public class PageElement extends BasePage {
         waitElementAppear(By.xpath("//*[@id=\"__next\"]/div/div[2]/div[1]/div[2]/div/div[1]/div[1]/div/div/div[2]/div/div/div"));
         click(By.xpath("//*[@id=\"__next\"]/div/div[2]/div[1]/div[2]/div/div[1]/div[1]/div/div/div[3]/div/div/div"));
         takeScreenshot();
-//        click(By.xpath("//*[@id=\"__next\"]/div/div[2]/div[1]/div[2]/div/div[1]/div[2]/div/div[7]/div[2]/div[2]/div"));
-//        waitElementAppear(By.xpath("//*[@id=\"__next\"]/div/div[2]/div/div/div[2]/div/div[1]/div/div[2]/div[1]/h2"));
-//        isDisplayed(By.xpath("//*[@id=\"__next\"]/div/div[2]/div/div/div[2]/div/div[1]/div/div[1]/div[2]"));
-//        Assert.assertTrue(getText(By.xpath("//*[@id=\"__next\"]/div/div[2]/div/div/div[2]/div/div[2]/div/div/div[3]/div[2]/div[2]")).contains("Rahdian"));
-        Thread.sleep(5000);
+        click(By.xpath("//*[@id=\"__next\"]/div/div[2]/div[1]/div[2]/div/div[1]/div[2]/div/div[7]/div[2]/div[2]/div"));
+        waitElementAppear(By.xpath("//*[@id=\"__next\"]/div/div[2]/div/div/div[2]/div/div[1]/div/div[2]/div[1]/h2"));
+        isDisplayed(By.xpath("//*[@id=\"__next\"]/div/div[2]/div/div/div[2]/div/div[1]/div/div[1]/div[2]"));
     }
 }
