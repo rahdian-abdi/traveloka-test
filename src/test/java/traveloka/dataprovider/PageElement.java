@@ -78,7 +78,7 @@ public class PageElement extends BasePage {
     public void fillContactDetails(){
         inputText(By.xpath("//*[@id=\"__next\"]/div[2]/div[2]/div[1]/div[2]/div/div/div/div[2]/div[1]/div/div[1]/input"), "Rahdian Abdi");
         inputText(By.xpath("//*[@id=\"__next\"]/div[2]/div[2]/div[1]/div[2]/div/div/div/div[2]/div[2]/div[1]/div[1]/input"), "81676095");
-        inputText(By.xpath("//*[@id=\"__next\"]/div[2]/div[2]/div[1]/div[2]/div/div/div/div[2]/div[2]/div[2]/div/div[1]/input"), "rahdian.abdi@yahoo.com");
+        inputText(By.xpath("//*[@id=\"__next\"]/div[2]/div[2]/div[1]/div[2]/div/div/div/div[2]/div[2]/div[2]/div/div[1]/input"), "rahdian@mail.com");
         takeScreenshot();
     }
     public void fillDriverDetails(){
