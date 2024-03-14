@@ -52,3 +52,5 @@ After the test execution completes successfully, generate and view the Allure re
 ## Result Example
 ![Sample Report](img.png)
 
+## Notes
+- After click continue from input drop off notes, there will be captcha puzzle that could be solved by human. Hence, to solve the puzzle can't be automated and given delay 10000ms.
