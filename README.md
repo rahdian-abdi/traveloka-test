@@ -50,4 +50,5 @@ After the test execution completes successfully, generate and view the Allure re
 - **allure-results**: Contains the compiled classes and generated reports.
 
 ## Result Example
+![Sample Report](img.png)
 
