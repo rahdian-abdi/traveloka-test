@@ -1,4 +1,4 @@
-package tapmo.pageobject;
+package traveloka.pageobject;
 
 import io.qameta.allure.Allure;
 import io.qameta.allure.Attachment;

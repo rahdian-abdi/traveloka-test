@@ -1,8 +1,7 @@
-package tapmo.dataprovider;
+package traveloka.dataprovider;
 
-import org.junit.Assert;
 import org.openqa.selenium.By;
-import tapmo.pageobject.BasePage;
+import traveloka.pageobject.BasePage;
 
 public class PageElement extends BasePage {
     public void goToCarService(){
@@ -34,7 +33,7 @@ public class PageElement extends BasePage {
     }
     public void searchCar() throws InterruptedException {
         click(By.xpath("//*[@data-testid=\"rental-search-form-cta\"]"));
-        click(By.xpath("//*[@id=\"__next\"]/div[6]/div/div[2]/div/div/div[4]/div[9]/div/div[2]/div[2]"));
+        // click(By.xpath("//*[@id=\"__next\"]/div[6]/div/div[2]/div/div/div[4]/div[9]/div/div[2]/div[2]"));
         Thread.sleep(5000);
     }
     public void selectCar(){
